@@ -1,24 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
+import CharacterList, { Character } from './CharacterList';
 import './App.css';
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello, world.</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-};
+class App extends React.Component {
+  render() {
+    const characters: Character[] = [
+      { id: 1, name: 'HANESAKI Ayano', age: 16, height: 151 },
+      { id: 2, name: 'ARAGAKI Nagisa', age: 18, height: 174 },
+      { id: 3, name: 'IZUMI Riko', age: 18 },
+    ];
+
+    return (
+      <div className="container">
+        <header>
+          <h1>Characters</h1>
+        </header>
+        <CharacterList
+          school="Kitakomachi High School"
+          characters={characters}
+        />
+      </div>
+    );
+  }
+}
 
 export default App;
