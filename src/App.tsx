@@ -1,41 +1,63 @@
 import React from 'react';
-import { Button, Card, Statistic } from 'semantic-ui-react';
+import { Button, Card, Icon, Statistic } from 'semantic-ui-react';
 import './App.css';
 
+const LIMIT = 60;
+
 interface AppState {
-  count: number;
+  timeLeft: number;
 }
 
 class App extends React.Component<{}, AppState> {
+  timerId?: NodeJS.Timer;
+
   constructor(props: {}) {
     super(props);
-    this.state = { count: 0 };
-    this.increment = this.increment.bind(this);
-    this.decrement = this.decrement.bind(this);
+    this.state = { timeLeft: LIMIT };
   }
 
-  increment() {
-    this.setState(prevState => ({ count: prevState.count + 1 }));
-  }
+  reset = () => {
+    this.setState({ timeLeft: LIMIT });
+  };
 
-  decrement() {
-    this.setState(prevState => ({ count: prevState.count - 1 }));
-  }
+  tick = () => {
+    this.setState(prevState => ({ timeLeft: prevState.timeLeft - 1 }));
+  };
+
+  componentDidMount = () => {
+    this.timerId = setInterval(this.tick, 1000);
+  };
+
+  componentDidUpdate = () => {
+    const { timeLeft } = this.state;
+    if (timeLeft === 0) {
+      this.reset();
+    }
+  };
+
+  componentWillUnmount = () => {
+    clearInterval(this.timerId as NodeJS.Timer);
+  };
 
   render() {
-    const { count } = this.state;
+    const { timeLeft } = this.state;
 
     return (
       <div className="container">
         <header>
-          <h1>カウンター</h1>
+          <h1>タイマー</h1>
         </header>
         <Card>
           <Statistic className="number-board">
-            <Statistic.Label>count</Statistic.Label>
-            <Statistic.Value>{count}</Statistic.Value>
+            <Statistic.Label>time</Statistic.Label>
+            <Statistic.Value>{timeLeft}</Statistic.Value>
           </Statistic>
           <Card.Content>
+            <Button color="red" fluid onClick={this.reset}>
+              <Icon name="redo" />
+              Reset
+            </Button>
+            {/*             
             <div className="ui two buttons">
               <Button color="red" onClick={this.decrement}>
                 -1
@@ -43,7 +65,7 @@ class App extends React.Component<{}, AppState> {
               <Button color="red" onClick={this.increment}>
                 +1
               </Button>
-            </div>
+            </div> */}
           </Card.Content>
         </Card>
       </div>
