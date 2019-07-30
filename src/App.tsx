@@ -1,27 +1,40 @@
-import React from 'react';
-import CharacterList, { Character } from './CharacterList';
+import React, { useState } from 'react';
+import { Button, Card, Statistic } from 'semantic-ui-react';
+
 import './App.css';
 
-class App extends React.Component {
-  render() {
-    const characters: Character[] = [
-      { id: 1, name: 'HANESAKI Ayano', age: 16, height: 151 },
-      { id: 2, name: 'ARAGAKI Nagisa', age: 18, height: 174 },
-      { id: 3, name: 'IZUMI Riko', age: 18 },
-    ];
+const App: React.FC = () => {
+  const [count, setCount] = useState(0);
+  const increment = () => {
+    setCount(count + 1);
+  };
+  const decrement = () => {
+    setCount(count - 1);
+  };
 
-    return (
-      <div className="container">
-        <header>
-          <h1>Characters</h1>
-        </header>
-        <CharacterList
-          school="Kitakomachi High School"
-          characters={characters}
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="container">
+      <header>
+        <h1>カウンター</h1>
+      </header>
+      <Card>
+        <Statistic className="number-board">
+          <Statistic.Label>count</Statistic.Label>
+          <Statistic.Value>{count}</Statistic.Value>
+        </Statistic>
+        <Card.Content>
+          <div className="ui two buttons">
+            <Button className="red" onClick={decrement}>
+              -1
+            </Button>
+            <Button className="red" onClick={increment}>
+              +1
+            </Button>
+          </div>
+        </Card.Content>
+      </Card>
+    </div>
+  );
+};
 
 export default App;
