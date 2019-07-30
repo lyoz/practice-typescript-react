@@ -1,73 +1,24 @@
 import React from 'react';
-import { Button, Card, Icon, Statistic } from 'semantic-ui-react';
+import CharacterList, { Character } from './CharacterList';
 import './App.css';
 
-const LIMIT = 60;
-
-interface AppState {
-  timeLeft: number;
-}
-
-class App extends React.Component<{}, AppState> {
-  timerId?: NodeJS.Timer;
-
-  constructor(props: {}) {
-    super(props);
-    this.state = { timeLeft: LIMIT };
-  }
-
-  reset = () => {
-    this.setState({ timeLeft: LIMIT });
-  };
-
-  tick = () => {
-    this.setState(prevState => ({ timeLeft: prevState.timeLeft - 1 }));
-  };
-
-  componentDidMount = () => {
-    this.timerId = setInterval(this.tick, 1000);
-  };
-
-  componentDidUpdate = () => {
-    const { timeLeft } = this.state;
-    if (timeLeft === 0) {
-      this.reset();
-    }
-  };
-
-  componentWillUnmount = () => {
-    clearInterval(this.timerId as NodeJS.Timer);
-  };
-
+class App extends React.Component {
   render() {
-    const { timeLeft } = this.state;
+    const characters: Character[] = [
+      { id: 1, name: 'HANESAKI Ayano', age: 16, height: 151 },
+      { id: 2, name: 'ARAGAKI Nagisa', age: 18, height: 174 },
+      { id: 3, name: 'IZUMI Riko', age: 18 },
+    ];
 
     return (
       <div className="container">
         <header>
-          <h1>タイマー</h1>
+          <h1>Characters</h1>
         </header>
-        <Card>
-          <Statistic className="number-board">
-            <Statistic.Label>time</Statistic.Label>
-            <Statistic.Value>{timeLeft}</Statistic.Value>
-          </Statistic>
-          <Card.Content>
-            <Button color="red" fluid onClick={this.reset}>
-              <Icon name="redo" />
-              Reset
-            </Button>
-            {/*             
-            <div className="ui two buttons">
-              <Button color="red" onClick={this.decrement}>
-                -1
-              </Button>
-              <Button color="red" onClick={this.increment}>
-                +1
-              </Button>
-            </div> */}
-          </Card.Content>
-        </Card>
+        <CharacterList
+          school="Kitakomachi High School"
+          characters={characters}
+        />
       </div>
     );
   }
