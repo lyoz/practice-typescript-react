@@ -6,12 +6,14 @@ const App: React.FC = () => {
   const dispatch = useDispatch()
   const handleDecrement = () => dispatch({ type: 'DECREMENT' })
   const handleIncrement = () => dispatch({ type: 'INCREMENT' })
+  const handleIncrementAsync = () => dispatch({ type: 'INCREMENT_ASYNC' })
   return (
     <>
       Clicked: {value} times
       <hr />
       <button onClick={handleDecrement}>-1</button>
       <button onClick={handleIncrement}>+1</button>
+      <button onClick={handleIncrementAsync}>+1 (async)</button>
     </>
   )
 }
