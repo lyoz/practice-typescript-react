@@ -1,0 +1,8 @@
+{
+  "name": "practice-typescript-react",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:lyoz/practice-typescript-react.git",
+  "author": "lyoz <lyoz@users.noreply.github.com>",
+  "license": "MIT"
+}
