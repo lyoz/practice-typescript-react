@@ -18,4 +18,8 @@ module.exports = {
       },
     ],
   },
+  devServer: {
+    contentBase: 'dist',
+    open: false,
+  }
 }
