@@ -2,7 +2,7 @@ module.exports = {
   mode: 'development',
   devtool: 'source-map',
   resolve: {
-    extensions: ['.ts', '.tsx'],
+    extensions: ['.js', '.ts', '.tsx'],
   },
   module: {
     rules: [
@@ -17,9 +17,5 @@ module.exports = {
         use: ['source-map-loader'],
       },
     ],
-  },
-  externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM',
   },
 }
