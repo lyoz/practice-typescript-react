@@ -8,8 +8,12 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        exclude: /node_modules/,
-        use: ['ts-loader'],
+        use: [
+          {
+            loader: 'ts-loader',
+            options: { transpileOnly: true },
+          }
+        ],
       },
     ],
   },
