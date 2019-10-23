@@ -1,9 +1,5 @@
 module.exports = {
   mode: 'development',
-  devtool: 'source-map',
-  resolve: {
-    extensions: ['.js', '.ts', '.tsx'],
-  },
   module: {
     rules: [
       {
@@ -17,6 +13,10 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: ['.js', '.ts', '.tsx'],
+  },
+  devtool: 'inline-source-map',
   devServer: {
     contentBase: 'dist',
     open: false,
