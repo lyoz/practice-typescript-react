@@ -5,19 +5,19 @@ module.exports = {
         test: /\.(ts|tsx)$/,
         use: [
           {
-            loader: 'ts-loader',
+            loader: "ts-loader",
             options: { transpileOnly: true },
-          }
+          },
         ],
       },
     ],
   },
   resolve: {
-    extensions: ['.js', '.ts', '.tsx'],
+    extensions: [".js", ".ts", ".tsx"],
   },
-  devtool: 'inline-source-map',
+  devtool: "inline-source-map",
   devServer: {
-    contentBase: 'dist',
+    contentBase: "dist",
     open: false,
-  }
-}
+  },
+};
