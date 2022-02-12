@@ -1,8 +1,12 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 module.exports = {
+  mode: "development",
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/,
+        test: /\.tsx?$/,
         use: [
           {
             loader: "ts-loader",
@@ -12,13 +16,16 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "src/index.html",
+    }),
+  ],
   resolve: {
-    extensions: [".js", ".ts", ".tsx"],
+    extensions: [".tsx", ".ts", ".js"],
   },
-  devtool: "inline-source-map",
   devServer: {
-    contentBase: "dist",
+    static: "dist",
     historyApiFallback: true,
-    open: false,
   },
 };
