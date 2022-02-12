@@ -1,6 +1,5 @@
 import React from "react";
-import Hello from "./components/Hello";
 
-const App: React.FC = () => <Hello compiler="TypeScript" framework="React" />;
+const App: React.FC = () => <div>Hello, React world!</div>;
 
 export default App;
