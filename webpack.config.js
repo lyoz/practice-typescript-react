@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -10,7 +11,6 @@ module.exports = {
         use: [
           {
             loader: "ts-loader",
-            options: { transpileOnly: true },
           },
         ],
       },
@@ -20,6 +20,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "src/index.html",
     }),
+    new ForkTsCheckerWebpackPlugin(),
   ],
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
