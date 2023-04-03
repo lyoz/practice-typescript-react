@@ -1,5 +1,14 @@
-import React from "react";
+import { useState } from "react";
 
-const App: React.FC = () => <div>Hello, React world!</div>;
+export const App = () => {
+  const [count, setCount] = useState(0);
 
-export default App;
+  return (
+    <div>
+      <p>Hello, webpack + React + TypeScript!</p>
+      <button onClick={() => setCount((count) => count + 1)}>
+        count is {count}
+      </button>
+    </div>
+  );
+};
