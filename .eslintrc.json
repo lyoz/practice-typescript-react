@@ -1,29 +1,29 @@
 {
-  "root": true,
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
-    "plugin:react-hooks/recommended",
-    "prettier"
-  ],
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
-  "rules": {
-    "eqeqeq": ["error", "always", { "null": "ignore" }],
-    "react/prop-types": "off"
-  },
-  "overrides": [
-    {
-      "files": ["webpack.config.js"],
-      "env": { "node": true },
-      "rules": {
-        "@typescript-eslint/no-var-requires": "off"
-      }
-    }
-  ]
+	"root": true,
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:react/recommended",
+		"plugin:react/jsx-runtime",
+		"plugin:react-hooks/recommended",
+		"prettier"
+	],
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"rules": {
+		"eqeqeq": ["error", "always", { "null": "ignore" }],
+		"react/prop-types": "off"
+	},
+	"overrides": [
+		{
+			"files": ["webpack.config.js"],
+			"env": { "node": true },
+			"rules": {
+				"@typescript-eslint/no-var-requires": "off"
+			}
+		}
+	]
 }
