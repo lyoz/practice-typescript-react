@@ -1,1 +1,4 @@
 /dist/
+/src/index.html
+/package.json
+/package-lock.json
